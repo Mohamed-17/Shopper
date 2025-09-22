@@ -9,14 +9,14 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // turbopack: {
-  //   rules: {
-  //     "*.mjs": {
-  //       loaders: ["swc-loader"],
-  //       as: "*.js",
-  //     },`
-  //   },
-  // },
+  turbopack: {
+    rules: {
+      "*.mjs": {
+        loaders: ["swc-loader"],
+        as: "*.js",
+      },
+    },
+  },
 };
 
 export default nextConfig;
