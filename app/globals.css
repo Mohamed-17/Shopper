@@ -4,16 +4,21 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-poppins: "Poppins", sans-serif;
+  --font-poppins: "Poppins", sans-serif fallback;
   --color-shop-light-pink: #fcf0e4;
   --color-shop-dark-green: #063c28;
   --color-shop-btn-dark-green: #063d29;
   --color-shop-light-bg: #f6f6f6;
   --color-shop-light-green: #3b9c3c;
+  --color-shop-lighter-green: #93d991;
   --color-shop-orange: #fb6c08;
   --color-darkColor: #151515;
+  --color-dark_blue: #6c7fd8;
   --color-lightColor: #52525b;
   --color-lightOrange: #fca99b;
+  --color-shop-lighter-bg: #f1f3f8;
+  --color-shop-light-text: #686e7d;
+  --color-shop-lighter-text: #ababab;
 }
 
 @theme inline {

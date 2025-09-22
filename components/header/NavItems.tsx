@@ -13,7 +13,7 @@ function NavItems() {
         <Link
           href={item.href}
           key={item.title}
-          className={`group font-poppins  relative hover:text-shop-light-green ${
+          className={`group font-poppins font-[640]  relative hover:text-shop-light-green ${
             item.href === pathName && "text-shop-light-green"
           }`}
         >

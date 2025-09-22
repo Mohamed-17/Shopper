@@ -7,7 +7,7 @@ import { banner_1 } from "@/public";
 
 function HomePage() {
   return (
-    <div className="flex justify-between items-center px-10">
+    <div className="flex justify-between items-center px-4 py-10 md:px-10">
       <div className="flex-1  space-y-4">
         <Title>
           Grab Upto 50% Off on <br /> Selected headphone
