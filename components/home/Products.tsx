@@ -24,7 +24,6 @@ function Products() {
       try {
         const response = await client.fetch(query, params);
         setProducts(response);
-        console.log(response);
       } catch (err) {
         console.log("fetching error :", err);
       } finally {

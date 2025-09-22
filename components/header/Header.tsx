@@ -7,9 +7,9 @@ import MenuList from "./Menu";
 
 function Header() {
   return (
-    <div>
+    <header className="sticky top-0 bg-white/70 z-100 backdrop-blur-md">
       <Container>
-        <header className="flex items-center justify-between py-5 w-full">
+        <div className="flex items-center justify-between py-5 w-full">
           {/* LOGO */}
           <div className="flex-1 flex items-center gap-4.5">
             <div className="md:hidden">
@@ -21,9 +21,9 @@ function Header() {
           <NavItems />
           {/* Cart & Auth Logic */}
           <ItemsDetailsNav />
-        </header>
+        </div>
       </Container>
-    </div>
+    </header>
   );
 }
 

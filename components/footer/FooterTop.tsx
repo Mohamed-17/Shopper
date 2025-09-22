@@ -13,7 +13,7 @@ const locations: location[] = [
     desc: "Mon - Sat: 10:00 AM - 7:00 PM",
     icon: <Clock />,
   },
-  { title: "Email Us", desc: "mohamedsneaky1@gmail.cpm", icon: <Mail /> },
+  { title: "Email Us", desc: "mohamedsneaky1@gmail.com", icon: <Mail /> },
 ];
 function FooterTop() {
   return (

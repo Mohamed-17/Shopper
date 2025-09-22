@@ -4,6 +4,8 @@ import { Star } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 import CurrencyFormatter from "../CurrencyFormatter";
+import AddToCart from "../AddToCart";
+import ProductTags from "./ProductTags";
 
 type Props = {
   product: Product;
@@ -18,13 +20,13 @@ function ProductItem({ product }: Props) {
       </div>
     );
   }
-  console.log(product);
+
   const firstImage = product.images[0];
   const imageSource = firstImage.asset || firstImage.media;
 
   return (
-    <div className="border-1 border-shop-light-text/20 rounded-md   w-full">
-      <div className="bg-shop-lighter-bg group overflow-hidden">
+    <div className="border-1 border-shop-light-text/20 rounded-md group  w-full">
+      <div className="bg-shop-lighter-bg group overflow-hidden relative">
         {imageSource ? (
           <Image
             src={urlFor(imageSource).width(300).height(300).url()}
@@ -44,6 +46,7 @@ function ProductItem({ product }: Props) {
             </span>
           </div>
         )}
+        <ProductTags product={product} className={""} />
       </div>
       <div className="px-2 py-5 space-y-1.5">
         <div className="uppercase line-clamp-1 text-xs  text-shop-lighter-text">
@@ -86,6 +89,7 @@ function ProductItem({ product }: Props) {
           amount={product.price as number}
           discount={product.discount as number}
         />
+        <AddToCart product={product} className="w-36 mt-3" />
       </div>
     </div>
   );

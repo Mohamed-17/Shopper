@@ -22,6 +22,10 @@ export const categoryType = defineType({
       validation: (val) => val.required(),
     }),
     defineField({
+      name: "availableItem",
+      type: "number",
+    }),
+    defineField({
       name: "slug",
       type: "slug",
       options: {
