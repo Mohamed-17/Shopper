@@ -10,7 +10,6 @@ function ProductTags({
   product: Product;
   className?: string;
 }) {
-  console.log(product.status);
   if (product?.status === "hot")
     return (
       <div className="absolute top-2 p-1 left-2 bg-white border-1 border-shop-orange/60 group-hover:border-shop-orange hoverEffect  rounded-full">

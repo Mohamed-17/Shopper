@@ -6,6 +6,7 @@ import React from "react";
 import CurrencyFormatter from "../CurrencyFormatter";
 import AddToCart from "../AddToCart";
 import ProductTags from "./ProductTags";
+import Link from "next/link";
 
 type Props = {
   product: Product;
@@ -26,7 +27,10 @@ function ProductItem({ product }: Props) {
 
   return (
     <div className="border-1 border-shop-light-text/20 rounded-md group  w-full">
-      <div className="bg-shop-lighter-bg group overflow-hidden relative">
+      <Link
+        href={`/product/${product.slug?.current}`}
+        className="bg-shop-lighter-bg group overflow-hidden relative"
+      >
         {imageSource ? (
           <Image
             src={urlFor(imageSource).width(300).height(300).url()}
@@ -47,7 +51,7 @@ function ProductItem({ product }: Props) {
           </div>
         )}
         <ProductTags product={product} className={""} />
-      </div>
+      </Link>
       <div className="px-2 py-5 space-y-1.5">
         <div className="uppercase line-clamp-1 text-xs  text-shop-lighter-text">
           {product.categories?.join(", ")}

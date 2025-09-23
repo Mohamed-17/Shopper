@@ -1,12 +1,16 @@
 import Categries from "@/components/categories/Categries";
 import Container from "@/components/Container";
+import Exchange from "@/components/Exchange";
+import Brands from "@/components/home/Brands";
 import HomePage from "@/components/home/HomePage";
+import LatestBlogs from "@/components/home/LatestBlogs";
 import Products from "@/components/home/Products";
-import { getCategories } from "@/sanity/queries";
+import { getAllBrands, getCategories, getLatstBlogs } from "@/sanity/queries";
 import React from "react";
 
 async function page() {
   const categories = await getCategories(6);
+  const brands = await getAllBrands();
 
   return (
     <div>
@@ -14,6 +18,9 @@ async function page() {
         <HomePage />
         <Products />
         <Categries categories={categories} />
+        <Brands brands={brands} />
+        <Exchange />
+        <LatestBlogs />
       </Container>
     </div>
   );
