@@ -73,14 +73,9 @@ function CategoryNavigation({
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2.5">
             {products.map((product) => (
               <AnimatePresence key={product._id}>
-                <motion.div
-                  layout
-                  initial={{ opacity: 0.2 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                >
+                <div>
                   <ProductItem product={product} />
-                </motion.div>
+                </div>
               </AnimatePresence>
             ))}
           </div>
