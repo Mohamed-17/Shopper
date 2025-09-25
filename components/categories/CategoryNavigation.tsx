@@ -9,6 +9,7 @@ import { Loader2 } from "lucide-react";
 import NoProductsAvailable from "../NoProductsAvailable";
 import { AnimatePresence, motion } from "motion/react";
 import ProductItem from "../home/ProductItem";
+import { ProductWithBrand } from "@/app/(client)/product/[slug]/page";
 
 function CategoryNavigation({
   categories,
@@ -18,7 +19,7 @@ function CategoryNavigation({
   slug: string;
 }) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<ProductWithBrand[]>([]);
   const [currentSlug, setCurrentSlug] = useState<string>(slug);
   const router = useRouter();
   function handleClick(slug: string | undefined) {

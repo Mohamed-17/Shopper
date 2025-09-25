@@ -2,12 +2,12 @@ import Container from "@/components/Container";
 import ProductItem from "@/components/home/ProductItem";
 import NoProductsAvailable from "@/components/NoProductsAvailable";
 import { Title } from "@/components/Text";
-import { Product } from "@/sanity.types";
 import { getHotDeals } from "@/sanity/queries";
 import React from "react";
+import { ProductWithBrand } from "../product/[slug]/page";
 
 async function page() {
-  const deals: Product[] = await getHotDeals();
+  const deals: ProductWithBrand[] = await getHotDeals();
 
   if (!deals) <NoProductsAvailable selectedTab="HOT-DEALS" />;
 

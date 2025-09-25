@@ -1,5 +1,5 @@
 import { sanityFetch } from "../lib/live";
-import { BLOG_QUERY, BRAND_QUERY, HOT_DEALS } from "./queries";
+import { BLOG_QUERY, BRAND_QUERY, HOT_DEALS, PRODUCT_BY_SLUG } from "./queries";
 import type { Blog, Blogcategory } from "@/sanity.types";
 
 const getCategories = async (quantity?: number) => {
@@ -52,4 +52,17 @@ const getHotDeals = async () => {
   });
   return data ?? [];
 };
-export { getCategories, getAllBrands, getLatstBlogs, getHotDeals };
+const getProductBySlug = async (slug: string) => {
+  const { data } = await sanityFetch({
+    query: PRODUCT_BY_SLUG,
+    params: slug ? { slug } : {},
+  });
+  return data ?? null;
+};
+export {
+  getCategories,
+  getAllBrands,
+  getLatstBlogs,
+  getHotDeals,
+  getProductBySlug,
+};

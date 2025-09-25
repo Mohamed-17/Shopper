@@ -1,4 +1,3 @@
-import { Product } from "@/sanity.types";
 import { urlFor } from "@/sanity/lib/image";
 import { Star } from "lucide-react";
 import Image from "next/image";
@@ -8,9 +7,10 @@ import AddToCart from "../AddToCart";
 import ProductTags from "./ProductTags";
 import Link from "next/link";
 import AddByHeart from "../AddByHeart";
+import { ProductWithBrand } from "@/app/(client)/product/[slug]/page";
 
 type Props = {
-  product: Product;
+  product: ProductWithBrand;
 };
 function ProductItem({ product }: Props) {
   if (!product.images || product.images.length === 0) {
@@ -42,7 +42,7 @@ function ProductItem({ product }: Props) {
                 
                 ${product?.stock !== 0 ? "group-hover:scale-105" : "opacity-50"}
                 `}
-            loading="lazy"
+            priority={true}
           />
         ) : (
           <div className="w-full h-[300px] bg-gray-200 flex items-center justify-center">

@@ -1,14 +1,16 @@
-import { Product } from "@/sanity.types";
 import React from "react";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 import { ShoppingBag } from "lucide-react";
+import { ProductWithBrand } from "@/app/(client)/product/[slug]/page";
 
-type Props = {
-  product: Product;
-  className?: string;
-};
-function AddToCart({ product, className }: Props) {
+function AddToCart({
+  product,
+  className,
+}: {
+  product: ProductWithBrand;
+  className: string;
+}) {
   const isOutOfStock = product?.stock === 0;
   return (
     <Button

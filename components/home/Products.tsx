@@ -2,14 +2,14 @@
 import { productType } from "@/constants/data";
 import React, { useEffect, useState } from "react";
 import ProductsTabs from "./ProductsTabs";
-import { Product } from "@/sanity.types";
 import { client } from "@/sanity/lib/client";
 import ProductItem from "./ProductItem";
 import { Loader2 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import NoProductsAvailable from "../NoProductsAvailable";
+import { ProductWithBrand } from "@/app/(client)/product/[slug]/page";
 function Products() {
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<ProductWithBrand[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [selectedTab, setSelectedTab] = useState(productType[0].title);
   const query = `*[_type == "product" && variant== $variant] | order(name desc) {

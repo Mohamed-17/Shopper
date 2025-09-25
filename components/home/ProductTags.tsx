@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils";
-import { Product } from "@/sanity.types";
+import { ProductWithBrand } from "@/app/(client)/product/[slug]/page";
+
 import { Flame } from "lucide-react";
 import React from "react";
 
@@ -7,7 +7,7 @@ function ProductTags({
   product,
   className,
 }: {
-  product: Product;
+  product: ProductWithBrand;
   className?: string;
 }) {
   if (product?.status === "hot")
