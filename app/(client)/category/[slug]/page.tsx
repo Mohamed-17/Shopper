@@ -5,7 +5,7 @@ import { Category } from "@/sanity.types";
 import { getCategories } from "@/sanity/queries";
 import React from "react";
 
-async function CategoryPage({ params }: { params: { slug: string } }) {
+async function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {
   const categories: Category[] = await getCategories();
   const { slug } = await params;
   return (
