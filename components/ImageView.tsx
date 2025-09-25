@@ -30,7 +30,6 @@ type Props = {
 };
 function ImageView({ images, product }: Props) {
   const [activeImage, setActiveImage] = useState(images && images[0]);
-  console.log(activeImage);
 
   return (
     <div className="flex flex-col">

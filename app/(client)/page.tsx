@@ -5,7 +5,7 @@ import Brands from "@/components/home/Brands";
 import HomePage from "@/components/home/HomePage";
 import LatestBlogs from "@/components/home/LatestBlogs";
 import Products from "@/components/home/Products";
-import { getAllBrands, getCategories, getLatstBlogs } from "@/sanity/queries";
+import { getAllBrands, getCategories } from "@/sanity/queries";
 import React from "react";
 
 async function page() {

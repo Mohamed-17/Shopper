@@ -8,12 +8,12 @@ function SignleProductNavigator() {
   const [activeNav, setActiveNav] = useState("description");
   return (
     <div>
-      <div className="flex gap-1 items-center mt-7">
+      <div className="flex gap-5 items-center mt-7 flex-wrap">
         {singleProductNavigation.map((item) => (
           <Button
             key={item.value}
             onClick={() => setActiveNav(item?.value)}
-            className={`cursor-pointer md:px-17 py-5 text-md text-shop-btn-dark-green border-2 hover:bg-transparent  bg-transparent ${item.value === activeNav && "border-shop-dark-green"}`}
+            className={`cursor-pointer md:px-17 md:py-5 text-md text-shop-btn-dark-green border-2 hover:bg-transparent  bg-transparent ${item.value === activeNav && "border-shop-dark-green"}`}
           >
             {item.title}
           </Button>

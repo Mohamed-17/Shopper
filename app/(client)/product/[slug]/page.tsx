@@ -4,6 +4,7 @@ import SignleProductNavigator from "@/components/SignleProductNavigator";
 import SingleProductDetails from "@/components/SingleProductDetails";
 import { Brand, Product } from "@/sanity.types";
 import { getProductBySlug } from "@/sanity/queries";
+import { notFound } from "next/navigation";
 import React from "react";
 export type ProductWithBrand = Omit<Product, "brand"> & {
   brand?: Brand;
@@ -12,6 +13,8 @@ export type ProductWithBrand = Omit<Product, "brand"> & {
 async function page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const data: ProductWithBrand = await getProductBySlug(slug);
+  if (!data) return notFound();
+
   return (
     <Container>
       <div className="flex gap-5 flex-col md:flex-row">
