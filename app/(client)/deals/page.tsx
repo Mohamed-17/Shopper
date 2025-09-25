@@ -24,7 +24,9 @@ async function page() {
         </div>
         <div className="my-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
           {deals.map((deal) => (
-            <ProductItem product={deal} key={deal._id} />
+            <div key={deal._id} className="relative">
+              <ProductItem product={deal} key={deal._id} />
+            </div>
           ))}
         </div>
       </Container>

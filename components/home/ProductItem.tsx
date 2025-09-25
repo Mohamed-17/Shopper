@@ -7,6 +7,7 @@ import CurrencyFormatter from "../CurrencyFormatter";
 import AddToCart from "../AddToCart";
 import ProductTags from "./ProductTags";
 import Link from "next/link";
+import AddByHeart from "../AddByHeart";
 
 type Props = {
   product: Product;
@@ -51,6 +52,7 @@ function ProductItem({ product }: Props) {
           </div>
         )}
         <ProductTags product={product} className={""} />
+        <AddByHeart product={product} />
       </Link>
       <div className="px-2 py-5 space-y-1.5">
         <div className="uppercase line-clamp-1 text-xs  text-shop-lighter-text">

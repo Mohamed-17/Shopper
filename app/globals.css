@@ -19,6 +19,7 @@
   --color-shop-lighter-bg: #f1f3f8;
   --color-shop-light-text: #686e7d;
   --color-shop-lighter-text: #ababab;
+  --color-dark-red: #8b0000;
 }
 
 @theme inline {
