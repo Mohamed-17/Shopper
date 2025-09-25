@@ -1,5 +1,6 @@
 import Container from "@/components/Container";
 import ImageView from "@/components/ImageView";
+import SignleProductNavigator from "@/components/SignleProductNavigator";
 import SingleProductDetails from "@/components/SingleProductDetails";
 import { Brand, Product } from "@/sanity.types";
 import { getProductBySlug } from "@/sanity/queries";
@@ -20,6 +21,9 @@ async function page({ params }: { params: Promise<{ slug: string }> }) {
         <div className="flex-1">
           <SingleProductDetails product={data} />
         </div>
+      </div>
+      <div>
+        <SignleProductNavigator />
       </div>
     </Container>
   );

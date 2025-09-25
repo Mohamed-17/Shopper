@@ -36,3 +36,9 @@ export const productType: {
   { title: "Refrigerators", value: "refrigerators" },
   { title: "Others", value: "others" },
 ];
+
+export const singleProductNavigation: { title: string; value: string }[] = [
+  { title: "Description", value: "description" },
+  { title: "Additional Information", value: "additional-information" },
+  { title: "Reviews", value: "reviews" },
+];
