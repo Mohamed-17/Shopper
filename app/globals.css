@@ -144,3 +144,6 @@
 svg {
   cursor: pointer;
 }
+.scrollBar::-webkit-scrollbar {
+  display: none;
+}

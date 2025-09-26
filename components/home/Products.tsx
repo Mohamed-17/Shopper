@@ -4,10 +4,10 @@ import React, { useEffect, useState } from "react";
 import ProductsTabs from "./ProductsTabs";
 import { client } from "@/sanity/lib/client";
 import ProductItem from "./ProductItem";
-import { Loader2 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import NoProductsAvailable from "../NoProductsAvailable";
 import { ProductWithBrand } from "@/app/(client)/product/[slug]/page";
+import Loader from "../Loader";
 function Products() {
   const [products, setProducts] = useState<ProductWithBrand[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -37,10 +37,7 @@ function Products() {
       <ProductsTabs selectedTab={selectedTab} onSelectedTab={setSelectedTab} />
       <div className="mt-10">
         {!isLoading ? (
-          <div className="flex w-full h-80 justify-center items-center gap-5 text-dark_blue font-semibold">
-            <Loader2 className="w-5 h-6 animate-spin" />
-            <p>Products are loading..</p>
-          </div>
+          <Loader />
         ) : !products?.length ? (
           <NoProductsAvailable selectedTab={selectedTab} />
         ) : (

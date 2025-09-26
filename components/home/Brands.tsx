@@ -13,7 +13,10 @@ async function Brands({ brands }: { brands: Brand[] }) {
         {brands &&
           brands?.map((brand) => (
             <Link
-              href={`shop?=${brand?.slug?.current}`}
+              href={{
+                pathname: "/shop",
+                query: { brand: brand?.slug?.current },
+              }}
               key={brand._id}
               className="bg-white hoverEffecr hover:shadow-sm hover:shadow-darkColor/40 flex justify-center items-center"
             >
