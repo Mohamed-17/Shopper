@@ -1,8 +1,9 @@
 import Container from "@/components/Container";
+import Loader from "@/components/Loader";
 import Shop from "@/components/shop/Shop";
 import { Title } from "@/components/Text";
 import { getAllBrands, getCategories } from "@/sanity/queries";
-import React from "react";
+import React, { Suspense } from "react";
 
 async function page() {
   const categories = await getCategories();
@@ -13,7 +14,9 @@ async function page() {
         <Title className="text-xl uppercase text-black tracking-wide font-semibold">
           Get the products as your needs
         </Title>
-        <Shop categories={categories} brands={brands} />
+        <Suspense fallback={<Loader />}>
+          <Shop categories={categories} brands={brands} />
+        </Suspense>
       </Container>
     </div>
   );
