@@ -96,7 +96,7 @@ function Shop({
         ) : isLoading ? (
           <Loader />
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-3.5 p-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-1.5 md:gap-3.5 p-4">
             {products.map((product) => (
               <AnimatePresence key={product._id}>
                 <motion.div
@@ -105,7 +105,7 @@ function Shop({
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                 >
-                  <ProductItem product={product} />
+                  <ProductItem product={product} buttonStyle="w-full" />
                 </motion.div>
               </AnimatePresence>
             ))}

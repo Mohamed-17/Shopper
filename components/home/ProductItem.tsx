@@ -8,11 +8,13 @@ import ProductTags from "./ProductTags";
 import Link from "next/link";
 import AddByHeart from "../AddByHeart";
 import { ProductWithBrand } from "@/app/(client)/product/[slug]/page";
+import { cn } from "@/lib/utils";
 
 type Props = {
   product: ProductWithBrand;
+  buttonStyle?: string;
 };
-function ProductItem({ product }: Props) {
+function ProductItem({ product, buttonStyle }: Props) {
   if (!product.images || product.images.length === 0) {
     return (
       <div className="border-1 border-shop-light-text/20 p-4">
@@ -95,7 +97,7 @@ function ProductItem({ product }: Props) {
           amount={product.price as number}
           discount={product.discount as number}
         />
-        <AddToCart product={product} className="w-36 mt-3" />
+        <AddToCart product={product} className={cn("w-36 mt-3", buttonStyle)} />
       </div>
     </div>
   );
