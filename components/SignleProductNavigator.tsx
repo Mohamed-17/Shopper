@@ -57,9 +57,9 @@ function SignleProductNavigator() {
         )}
         {activeNav === "reviews" && (
           <>
-            <div className="mt-4  w-[80%]">
-              <div className="flex gap-2 items-center">
-                <div className="flex items-center">
+            <div className="mt-4 md:w-[80%]">
+              <div className="flex gap-2 items-center ">
+                <div className="flex items-center ">
                   {Array.from({ length: 5 }).map((_, i) => (
                     <Star
                       key={i}
@@ -69,11 +69,13 @@ function SignleProductNavigator() {
                     />
                   ))}
                 </div>
-                <p className="font-semibold">Duc Pham</p>
-                <p className="text-shop-light-text/90">- september 26, 2025</p>
+                <p className="font-semibold ">Duc Pham</p>
+                <p className="text-shop-light-text/90  text-sm">
+                  - september 26, 2025
+                </p>
               </div>
               <div>
-                <p className="text-shop-light-text">
+                <p className="text-shop-light-text text-sm">
                   I am 6 feet tall and 220 lbs. This shirt fit me perfectly in
                   the chest and shoulders. My only complaint is that it is so
                   long! I like to wear polo shirts untucked. This shirt goes
@@ -86,7 +88,7 @@ function SignleProductNavigator() {
                 </p>
               </div>
             </div>
-            <div className="mt-4 space-y-2 w-[80%]">
+            <div className="mt-8 space-y-2 md:w-[80%]">
               <div className="flex gap-2 items-center">
                 <div className="flex items-center">
                   {Array.from({ length: 5 }).map((_, i) => (
@@ -99,10 +101,12 @@ function SignleProductNavigator() {
                   ))}
                 </div>
                 <p className="font-semibold">Kenneth R. Myers </p>
-                <p className="text-shop-light-text/90">- september 26, 2025</p>
+                <p className="text-shop-light-text/90 text-sm">
+                  - september 26, 2025
+                </p>
               </div>
               <div>
-                <p className="text-shop-light-text">
+                <p className="text-shop-light-text text-sm">
                   I am 6 feet tall and 220 lbs. This shirt fit me perfectly in
                   the chest and shoulders. My only complaint is that it is so
                   long! I like to wear polo shirts untucked. This shirt goes
@@ -115,7 +119,7 @@ function SignleProductNavigator() {
                 </p>
               </div>
             </div>
-            <div className="mt-4 space-y-2 w-[80%]">
+            <div className="mt-8 space-y-2 md:w-[80%]">
               <div className="flex gap-2 items-center">
                 <div className="flex items-center">
                   {Array.from({ length: 5 }).map((_, i) => (
@@ -128,10 +132,12 @@ function SignleProductNavigator() {
                   ))}
                 </div>
                 <p className="font-semibold">Mike Addington </p>
-                <p className="text-shop-light-text/90">- september 26, 2025</p>
+                <p className="text-shop-light-text/90 text-sm">
+                  - september 26, 2025
+                </p>
               </div>
               <div>
-                <p className="text-shop-light-text">
+                <p className="text-shop-light-text text-sm">
                   I am 6 feet tall and 220 lbs. This shirt fit me perfectly in
                   the chest and shoulders. My only complaint is that it is so
                   long! I like to wear polo shirts untucked. This shirt goes
