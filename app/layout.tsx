@@ -1,3 +1,4 @@
+import "./globals.css";
 function RootLayout({
   children,
 }: Readonly<{
