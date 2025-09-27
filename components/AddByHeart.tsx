@@ -13,7 +13,7 @@ function AddByHeart({
   return (
     <div>
       {!singleProduct ? (
-        <Button className="bg-transparent rounded-full absolute text-darkColor top-2 right-2 p-3 cursor-pointer hover:bg-shop-btn-dark-green hover:text-white hoverEffect">
+        <Button className="bg-transparent  z-10 rounded-full absolute text-darkColor top-2 right-2 p-3 cursor-pointer hover:bg-shop-btn-dark-green hover:text-white hoverEffect">
           <Heart size={15} className="" />
         </Button>
       ) : (

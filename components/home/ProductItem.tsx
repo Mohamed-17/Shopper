@@ -29,10 +29,10 @@ function ProductItem({ product, buttonStyle }: Props) {
   const imageSource = firstImage.asset || firstImage.media;
 
   return (
-    <div className="border-1 border-shop-light-text/20 rounded-md group  w-full">
+    <div className="border-1 border-shop-light-text/20 rounded-md group relative w-full">
       <Link
         href={`/product/${product.slug?.current}`}
-        className="bg-shop-lighter-bg group overflow-hidden relative"
+        className="bg-shop-lighter-bg group overflow-hidden relative "
       >
         {imageSource ? (
           <Image
@@ -53,9 +53,9 @@ function ProductItem({ product, buttonStyle }: Props) {
             </span>
           </div>
         )}
-        <ProductTags product={product} className={""} />
-        <AddByHeart product={product} />
       </Link>
+      <ProductTags product={product} className={""} />
+      <AddByHeart product={product} />
       <div className="px-2 py-5 space-y-1.5">
         <div className="uppercase line-clamp-1 text-xs  text-shop-lighter-text">
           {product.categories?.join(", ")}

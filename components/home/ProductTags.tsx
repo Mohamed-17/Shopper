@@ -12,7 +12,7 @@ function ProductTags({
 }) {
   if (product?.status === "hot")
     return (
-      <div className="absolute top-2 p-1 left-2 bg-white border-1 border-shop-orange/60 group-hover:border-shop-orange hoverEffect  rounded-full">
+      <div className="absolute z-10 top-2 p-1 left-2 bg-white border-1 border-shop-orange/60 group-hover:border-shop-orange hoverEffect  rounded-full">
         <Flame size={20} className="text-shop-orange fill-shop-orange" />
       </div>
     );
