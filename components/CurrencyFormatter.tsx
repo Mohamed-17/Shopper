@@ -9,7 +9,7 @@ function CurrencyFormatter({
   className,
 }: {
   amount: number;
-  discount: number;
+  discount?: number;
   discountStyle?: string;
   amountStyle?: string;
   className?: string;
@@ -22,7 +22,8 @@ function CurrencyFormatter({
   }
 
   const price = toUSCurrency(amount);
-  const priceAfterDiscount = toUSCurrency(amount + (amount * discount) / 100);
+  const priceAfterDiscount =
+    discount && toUSCurrency(amount + (amount * discount) / 100);
   return (
     <div className={cn("flex gap-3", className)}>
       <div
@@ -30,9 +31,11 @@ function CurrencyFormatter({
       >
         <p className={cn("", amountStyle)}> {price}</p>
       </div>
-      <div className={cn("line-through text-gray-500 text-sm md:text-base")}>
-        <p className={cn("", discountStyle)}>{priceAfterDiscount}</p>
-      </div>
+      {discount && (
+        <div className={cn("line-through text-gray-500 text-sm md:text-base")}>
+          <p className={cn("", discountStyle)}>{priceAfterDiscount}</p>
+        </div>
+      )}
     </div>
   );
 }
