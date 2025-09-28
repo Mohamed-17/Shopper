@@ -3,7 +3,6 @@ import React from "react";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 import { Minus, Plus, ShoppingBag } from "lucide-react";
-
 import useStore from "@/store";
 import { Product } from "@/sanity.types";
 import toast from "react-hot-toast";

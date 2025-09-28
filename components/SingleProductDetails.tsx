@@ -15,6 +15,7 @@ import {
   AccordionTrigger,
 } from "@radix-ui/react-accordion";
 import { ProductWithBrand } from "@/app/(client)/product/[slug]/page";
+import { Product } from "@/sanity.types";
 
 function SingleProductDetails({ product }: { product: ProductWithBrand }) {
   return (
@@ -53,10 +54,21 @@ function SingleProductDetails({ product }: { product: ProductWithBrand }) {
       </div>
       <div className="flex gap-5">
         <AddToCart
-          product={product}
+          product={
+            {
+              ...product,
+            } as Product
+          }
           className="rounded-sm font-bold text-md w-[70%]"
         />
-        <AddByHeart product={product} singleProduct={true} />
+        <AddByHeart
+          product={
+            {
+              ...product,
+            } as Product
+          }
+          singleProduct={true}
+        />
       </div>
       <Accordion type="single" collapsible>
         <AccordionItem value="item-1">

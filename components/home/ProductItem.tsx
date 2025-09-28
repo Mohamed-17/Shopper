@@ -9,6 +9,7 @@ import Link from "next/link";
 import AddByHeart from "../AddByHeart";
 import { ProductWithBrand } from "@/app/(client)/product/[slug]/page";
 import { cn } from "@/lib/utils";
+import { Product } from "@/sanity.types";
 
 type Props = {
   product: ProductWithBrand;
@@ -55,7 +56,7 @@ function ProductItem({ product, buttonStyle }: Props) {
         )}
       </Link>
       <ProductTags product={product} className={""} />
-      <AddByHeart product={product} />
+      <AddByHeart product={product as Product} />
       <div className="px-2 py-5 space-y-1.5">
         <div className="uppercase line-clamp-1 text-xs  text-shop-lighter-text">
           {product.categories?.join(", ")}
@@ -97,7 +98,10 @@ function ProductItem({ product, buttonStyle }: Props) {
           amount={product.price as number}
           discount={product.discount as number}
         />
-        <AddToCart product={product} className={cn("w-36 mt-3", buttonStyle)} />
+        <AddToCart
+          product={product as Product}
+          className={cn("w-36 mt-3", buttonStyle)}
+        />
       </div>
     </div>
   );
