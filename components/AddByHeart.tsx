@@ -5,13 +5,16 @@ import { Button } from "./ui/button";
 import useStore from "@/store";
 import { Product } from "@/sanity.types";
 import toast from "react-hot-toast";
+import { cn } from "@/lib/utils";
 
 function AddByHeart({
   product,
   singleProduct,
+  className,
 }: {
   product: Product | null | undefined;
   singleProduct?: boolean;
+  className?: string;
 }) {
   const { addToFavorite, favoriteProduct } = useStore();
   const [existingProduct, setExistingProduct] = useState<Product | null>(null);
@@ -45,7 +48,10 @@ function AddByHeart({
       ) : (
         <Button
           onClick={(e) => handleToggleFavoriteItem(e)}
-          className={`bg-transparent group border-1 border-shop-light-green/70 hoverEffect cursor-pointer hover:border-shop-light-green hover:bg-transparent ${existingProduct && "border-shop-light-green"}`}
+          className={cn(
+            `bg-transparent group border-1 border-shop-light-green/70 hoverEffect cursor-pointer hover:border-shop-light-green hover:bg-transparent ${existingProduct && "border-shop-light-green"}`,
+            className
+          )}
         >
           <Heart
             size={15}

@@ -11,13 +11,16 @@ import CurrencyFormatter from "./CurrencyFormatter";
 function AddToCart({
   product,
   className,
+  hideAmount,
 }: {
   product: Product;
-  className: string;
+  className?: string;
+  hideAmount?: boolean;
 }) {
   const { addItem, getItemCount, removeItem } = useStore();
   const isOutOfStock = product?.stock === 0;
   const itemLength = getItemCount(product._id) as number;
+
   const handleAddItem = () => {
     if ((product?.stock as number) > itemLength) {
       addItem(product);
@@ -39,7 +42,11 @@ function AddToCart({
       {itemLength ? (
         <div>
           <div className="flex w-full justify-between items-center">
-            <span className="text-shop-light-text">Quantity</span>
+            <span
+              className={`${hideAmount ? "hidden" : "text-shop-light-text"}`}
+            >
+              Quantity
+            </span>
             <div className="flex items-center gap-1">
               <Button
                 variant={"outline"}
@@ -60,12 +67,14 @@ function AddToCart({
             </div>
           </div>
           <div className="flex justify-between">
-            <span className="text-sm text-darkColor font-semibold ">
+            <span
+              className={`${hideAmount ? "hidden" : "text-shop-light-text"}`}
+            >
               Subtotal
             </span>
             <CurrencyFormatter
               amount={((product?.price as number) * itemLength) as number}
-              amountStyle="text-darkColor"
+              amountStyle={`${hideAmount ? "hidden" : "text-darkColor"}`}
             />
           </div>
         </div>
