@@ -3,7 +3,7 @@ import Container from "@/components/Container";
 import SignInCart from "@/components/SignInCart";
 import useStore from "@/store";
 import { useAuth } from "@clerk/nextjs";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import WishListTable from "@/components/WishListTable";
 import { Button } from "@/components/ui/button";
 import toast from "react-hot-toast";
@@ -12,6 +12,14 @@ import EmptyFav from "@/components/EmptyFav";
 function WishListPage() {
   const { isSignedIn } = useAuth();
   const { favoriteProduct, resetFavorite } = useStore();
+  const [favoriteLength, setFavoriteLength] = useState(7);
+  const addMoreProducts = () => {
+    setFavoriteLength(Math.min(favoriteLength + 5, favoriteProduct.length));
+  };
+  useEffect(() => {
+    console.log(favoriteLength);
+  }, [favoriteLength]);
+
   const handleReset = () => {
     const message = window.confirm(
       "Are you sure you want to remove every favorite products ?"
@@ -41,16 +49,32 @@ function WishListPage() {
                 </tr>
               </thead>
               <tbody>
-                {favoriteProduct.map((product, index) => {
-                  return product._id ? (
-                    <WishListTable
-                      key={`${product._id || index}`}
-                      product={product}
-                    />
-                  ) : null;
-                })}
+                {favoriteProduct
+                  .slice(0, favoriteLength)
+                  .map((product, index) => {
+                    return product._id ? (
+                      <WishListTable
+                        key={`${product._id || index}`}
+                        product={product}
+                        favoriteLength={favoriteLength}
+                        setFavoriteLength={setFavoriteLength}
+                      />
+                    ) : null;
+                  })}
               </tbody>
             </table>
+            {favoriteProduct.length >= 7 && (
+              <div className="w-full text-center">
+                {favoriteProduct.length !== favoriteLength && (
+                  <button
+                    className="cursor-pointer text-md"
+                    onClick={addMoreProducts}
+                  >
+                    Load More
+                  </button>
+                )}
+              </div>
+            )}
             <Button
               onClick={() => handleReset()}
               className="bg-white text-darkColor border-1 border-shop-light-green md:py-6 md:px-5 text-lg hover:text-shop-dark-green hoverEffect hover:bg-white hover:border-shop-btn-dark-green cursor-pointer"

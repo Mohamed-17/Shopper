@@ -8,12 +8,17 @@ import { urlFor } from "@/sanity/lib/image";
 import AddToCart from "./AddToCart";
 import CurrencyFormatter from "./CurrencyFormatter";
 
-function WishListTable({ product }: { product: Product }) {
+function WishListTable({
+  product,
+  favoriteLength,
+  setFavoriteLength,
+}: {
+  product: Product;
+  favoriteLength: number;
+  setFavoriteLength: (value: number) => void;
+}) {
   const { favoriteProduct, removeFromFavorite } = useStore();
-  const [favoriteLength, setFavoriteLength] = useState(7);
-  const addMoreProducts = () => {
-    setFavoriteLength(Math.min(favoriteLength + 5, favoriteProduct.length));
-  };
+
   return (
     <tr className="w-full h-30 border-2">
       <td className="w-120">
