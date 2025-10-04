@@ -2,7 +2,7 @@ import Link from "next/link";
 import Logo from "./header/Logo";
 import { SignInButton, SignUpButton } from "@clerk/nextjs";
 
-function SignInCart() {
+function SignInCart({ message }: { message?: string }) {
   return (
     <div className="bg-white flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-10 md:py-32 h-full">
       <div className="max-w-md w-full space-y-8">
@@ -13,8 +13,9 @@ function SignInCart() {
             Welcome Back!
           </h2>
           <p className="mt-2 text-md text-gray-600">
-            Log in to view your cart items and checkout. Don&apos;t miss out on
-            your favorite products!
+            {message
+              ? message
+              : "Log in to view your cart items and checkout. Don't miss out on your favorite products!"}
           </p>
         </div>
         <div className="mt-8 space-y-6">
