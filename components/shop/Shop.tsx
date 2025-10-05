@@ -26,7 +26,7 @@ function Shop({
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedBrand, setSelectedBrand] = useState(brandPath || null);
   const [selectedPrice, setSelectedPrice] = useState<string | null>("");
-  console.log(brandPath);
+  
   const fetchData = async function () {
     setIsLoading(true);
 
