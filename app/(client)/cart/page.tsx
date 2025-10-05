@@ -1,4 +1,8 @@
 "use client";
+import {
+  createCheckoutSession,
+  Metadata,
+} from "@/actions/createCheckoutSession";
 import AddByHeart from "@/components/AddByHeart";
 import AddToCart from "@/components/AddToCart";
 import Container from "@/components/Container";
@@ -14,7 +18,7 @@ import { Address, Product } from "@/sanity.types";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import useStore from "@/store";
-import { useAuth } from "@clerk/nextjs";
+import { useAuth, useUser } from "@clerk/nextjs";
 import { RadioGroupItem } from "@radix-ui/react-radio-group";
 import { ShoppingBag, Trash } from "lucide-react";
 import Image from "next/image";
@@ -33,11 +37,13 @@ function CartPage() {
     resetCart,
   } = useStore();
   const isCardProductsAvailable = getGroupedItems().length > 0;
+  const groupedItems = useStore((state) => state.getGroupedItems());
   const handleDelteItem = (id: string) => {
     deleteCartProduct(id);
     toast.success("item deleted sucsessfuly");
   };
   const [loading, setLoading] = useState(false);
+  const { user } = useUser();
   const [addresses, setAddresses] = useState<Address[] | null>(null);
   const [selectedAddress, setSelectedAddress] = useState<Address | null>(null);
   console.log(selectedAddress);
@@ -72,6 +78,28 @@ function CartPage() {
     fetchAddresses();
   }, []);
 
+  const handleProceed = async () => {
+    setLoading(true);
+
+    try {
+      const metadata: Metadata = {
+        orderNumber: crypto.randomUUID(),
+        customerName: user?.fullName ?? "Unknown",
+        customerEmail: user?.emailAddresses[0]?.emailAddress ?? "Unknown",
+        clerkUserId: user?.id,
+        address: selectedAddress,
+      };
+      const checkoutUrl = await createCheckoutSession(groupedItems, metadata);
+
+      if (checkoutUrl) {
+        window.location.href = checkoutUrl;
+      }
+    } catch (error) {
+      console.error("Error creating checkout session:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
   if (!isSignedIn) return <SignInCart />;
   if (!isCardProductsAvailable) return <EmptyCard />;
   return (
@@ -86,7 +114,7 @@ function CartPage() {
         <div className="">
           <div className="grid grid-cols-3 mt-2 ">
             <div className="flex flex-1 flex-col col-span-3 lg:col-span-2 gap-8 items-center p-5">
-              {getGroupedItems().map(({ product }: { product: Product }) => {
+              {groupedItems?.map(({ product }: { product: Product }) => {
                 const itemCount = getItemCount(product._id);
                 return (
                   <div
@@ -198,8 +226,12 @@ function CartPage() {
                   </span>
                 </div>
                 <div className="mt-5">
-                  <Button className="bg-shop-btn-dark-green w-full">
-                    Proceed to Checkout
+                  <Button
+                    className="bg-shop-btn-dark-green w-full"
+                    disabled={loading}
+                    onClick={handleProceed}
+                  >
+                    {loading ? "Please Wait..." : "Proceed to Checkout"}
                   </Button>
                 </div>
                 {addresses && (
