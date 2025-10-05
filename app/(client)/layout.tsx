@@ -4,6 +4,8 @@ import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "react-hot-toast";
+import { Suspense } from "react";
+import Loader from "@/components/Loader";
 
 export const metadata: Metadata = {
   title: {
@@ -25,7 +27,7 @@ export default function RootLayout({
       <div className="flex flex-col min-h-screen">
         <Header />
         <main className="flex-1">
-          {children}
+          <Suspense fallback={<Loader />}>{children}</Suspense>
           <Toaster
             position="bottom-right"
             toastOptions={{
