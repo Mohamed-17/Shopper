@@ -20,7 +20,7 @@ async function page() {
         <Categries categories={categories} />
         <Brands brands={brands} />
         <Exchange />
-        <LatestBlogs />
+        <LatestBlogs context="Latest Blogs" />
       </Container>
     </div>
   );

@@ -6,12 +6,12 @@ import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import moment from "moment";
 import { Calendar } from "lucide-react";
-async function LatestBlogs() {
+async function LatestBlogs({ context }: { context: string }) {
   const latestBlogs: BlogWithCategories[] = await getLatstBlogs(4);
 
   return (
     <div className="mt-20 mb-5 md:mb-20">
-      <Title className="text-darkColor font-semibold">Latest Blog</Title>
+      <Title className="text-darkColor font-semibold">{context}</Title>
       <div className="pt-10">
         {latestBlogs ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 lg:grid-cols-4">
