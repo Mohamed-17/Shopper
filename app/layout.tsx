@@ -6,7 +6,7 @@ function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`font-Poppins antialiased`}>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }
