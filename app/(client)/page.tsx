@@ -1,24 +1,35 @@
-import Categries from "@/components/categories/Categries";
 import Container from "@/components/Container";
 import Exchange from "@/components/Exchange";
-import Brands from "@/components/home/Brands";
 import HomePage from "@/components/home/HomePage";
 import LatestBlogs from "@/components/home/LatestBlogs";
-import Products from "@/components/home/Products";
-import { getAllBrands, getCategories } from "@/sanity/queries";
-import React from "react";
+import Loader from "@/components/Loader";
+import React, { Suspense } from "react";
+import dynamic from "next/dynamic";
+
+const ProductsPage = dynamic(() => import("@/components/home/Products"), {
+  loading: () => <Loader />,
+});
+const CategriesPage = dynamic(
+  () => import("@/components/categories/Categries"),
+  {
+    loading: () => <Loader />,
+  }
+);
+const BrandsPage = dynamic(() => import("@/components/home/Brands"), {
+  loading: () => <Loader />,
+});
+
 
 async function page() {
-  const categories = await getCategories(6);
-  const brands = await getAllBrands();
-
   return (
     <div>
       <Container className="py-16 md:py-5">
         <HomePage />
-        <Products />
-        <Categries categories={categories} />
-        <Brands brands={brands} />
+        <Suspense fallback={<Loader />}>
+          <ProductsPage />
+          <CategriesPage />
+          <BrandsPage />
+        </Suspense>
         <Exchange />
         <LatestBlogs context="Latest Blogs" />
       </Container>

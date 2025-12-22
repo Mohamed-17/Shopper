@@ -4,8 +4,10 @@ import { Brand } from "@/sanity.types";
 import Link from "next/link";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
+import { getAllBrands } from "@/sanity/queries";
 
-async function Brands({ brands }: { brands: Brand[] }) {
+async function Brands() {
+  const brands = await getAllBrands();
   return (
     <div className="mt-10 mb-20">
       <Title className="text-darkColor font-semibold">Shop By Brands</Title>

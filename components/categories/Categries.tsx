@@ -4,8 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { Title } from "../Text";
+import { getCategories } from "@/sanity/queries";
 
-function Categries({ categories }: { categories: Category[] }) {
+async function Categries() {
+  const categories = await getCategories(6);
   return (
     <div className="my-15 ">
       <Title className="text-darkColor font-semibold">Popular Categories</Title>
