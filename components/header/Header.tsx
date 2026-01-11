@@ -4,6 +4,7 @@ import Logo from "./Logo";
 import NavItems from "./NavItems";
 import ItemsDetailsNav from "./ItemsDetailsNav";
 import MenuList from "./Menu";
+import Search from "./Search";
 
 function Header() {
   return (
@@ -24,6 +25,8 @@ function Header() {
             </div>
             {/* Cart & Auth Logic */}
             <div className="flex gap-5 items-center">
+              <Search />
+
               <ItemsDetailsNav />
             </div>
           </div>
