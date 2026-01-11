@@ -19,19 +19,18 @@ const BrandsPage = dynamic(() => import("@/components/home/Brands"), {
   loading: () => <Loader />,
 });
 
-
 async function page() {
   return (
     <div>
       <Container className="py-16 md:py-5">
-        <HomePage />
         <Suspense fallback={<Loader />}>
+          <HomePage />
           <ProductsPage />
           <CategriesPage />
           <BrandsPage />
+          <Exchange />
+          <LatestBlogs context="Latest Blogs" />
         </Suspense>
-        <Exchange />
-        <LatestBlogs context="Latest Blogs" />
       </Container>
     </div>
   );
