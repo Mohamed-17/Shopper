@@ -7,23 +7,29 @@ import MenuList from "./Menu";
 
 function Header() {
   return (
-    <header className="sticky top-0 bg-white/70 z-100 backdrop-blur-md">
-      <Container>
-        <div className="flex items-center justify-between py-5 w-full">
-          {/* LOGO */}
-          <div className="flex-1 flex items-center gap-4.5">
-            <div className="md:hidden">
-              <MenuList />
+    <>
+      <header className="sticky top-0 bg-white/70 z-100 backdrop-blur-md">
+        <Container>
+          <div className="flex items-center justify-between py-5 w-full">
+            {/* LOGO */}
+            <div className="flex-1 flex items-center gap-4.5">
+              <div className="md:hidden">
+                <MenuList />
+              </div>
+              <Logo />
             </div>
-            <Logo />
+            {/* NavItems */}
+            <div className="flex-1">
+              <NavItems />
+            </div>
+            {/* Cart & Auth Logic */}
+            <div className="flex gap-5 items-center">
+              <ItemsDetailsNav />
+            </div>
           </div>
-          {/* NavItems */}
-          <NavItems />
-          {/* Cart & Auth Logic */}
-          <ItemsDetailsNav />
-        </div>
-      </Container>
-    </header>
+        </Container>
+      </header>
+    </>
   );
 }
 

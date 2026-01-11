@@ -7,7 +7,6 @@ import SignIn from "./SignIn";
 function ItemsDetailsNav() {
   return (
     <div className="flex-1 flex justify-end gap-5 items-center">
-      <Search />
       <Cart />
       <LikedItems />
       <SignIn />

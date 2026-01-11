@@ -1,13 +1,9 @@
-import { Search as SearchIcon } from "lucide-react";
+"use client";
+import { SearchIcon } from "lucide-react";
 import React from "react";
 
 function Search() {
-  return (
-    <SearchIcon
-      size={20}
-      className="text-lightColor hover:text-shop-light-green hoverEffect"
-    />
-  );
+  return <></>;
 }
 
 export default Search;
