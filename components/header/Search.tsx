@@ -50,7 +50,7 @@ function Search() {
           onClick={handleModalClose}
         >
           <div
-            className="bg-white w-[800px] h-[600px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded z-10000"
+            className="bg-white w-[300px] h-[500px] md:w-[600px] md:h-[400px] lg:w-[800px] lg:h-[600px]  absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded z-10000"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="grid grid-cols-4 gap-2 p-3">
@@ -88,10 +88,12 @@ function Search() {
                           alt={product.name || "product"}
                           width={100}
                           height={100}
-                          className="rounded"
+                          className="rounded object-contain"
                         />
                       </div>
-                      <div>{product.name}</div>
+                      <div>
+                        {product.name?.split(" ").slice(0, 5).join(" ")}
+                      </div>
                     </Link>
                   ))
                 ) : (
